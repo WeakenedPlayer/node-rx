@@ -5,17 +5,14 @@
     "moduleResolution": "node",
     "declaration": true,
     "outDir": "./dist",
-    
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "lib": [ "es6" ],
-    "typeRoots": [ "node_modules/@types" ],
+    "lib": [ "dom", "es6" ],
+    "typeRoots": [ "node_modules/@types" ]
   },
   "include": [ "src/**/*" ],
   "exclude": [ "node_modules", "dist" ]
-  }
 }
 
 

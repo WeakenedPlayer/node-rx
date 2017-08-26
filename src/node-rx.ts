@@ -25,15 +25,15 @@ export class NodeRx<T> {
         return combineReducers( reducer );
     }
     
-    private static initialStateFactory( initialState, reducer ) {
-        if (!initialState) {
-          return reducer(undefined, { type: Dispatcher.INIT });
+    private static initialStateFactory( initialState: any, reducer: any ) {
+        if ( !initialState ) {
+          return reducer( undefined, { type: Dispatcher.INIT } );
         }
         return initialState;
     }
     
-    private static storeFactory(dispatcher, reducer, state$ ) {
-        return new Store( dispatcher, reducer, state$ );
+    private static storeFactory<T>( dispatcher: Dispatcher, reducer: Reducer, state$: State<T> ) {
+        return new Store<T>( dispatcher, reducer, state$ );
     }
 
     public store: Store<T>;
@@ -50,12 +50,12 @@ export class NodeRx<T> {
 
         this.dispatcher = new Dispatcher();
         this.reducer =new Reducer( this.dispatcher, INITIAL_REDUCER );
-        this.state = new State( INITIAL_STATE, this.dispatcher, this.reducer );
-        this.store = NodeRx.storeFactory( this.dispatcher, this.reducer, this.state );
+        this.state = new State<T>( INITIAL_STATE, this.dispatcher, this.reducer );
+        this.store = NodeRx.storeFactory<T>( this.dispatcher, this.reducer, this.state );
 
         // effects
         this.actions = new Actions( this.dispatcher );
-        this.effectSubscription = new EffectsSubscription( this.store, null, effectsInstance );      // no parent
+        this.effectSubscription = new EffectsSubscription( this.store, null, effectsInstance );
     }
 }
 
