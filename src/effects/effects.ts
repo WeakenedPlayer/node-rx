@@ -1,7 +1,7 @@
+import { Observable } from 'rxjs/Observable';
 import { merge } from 'rxjs/observable/merge';
 import { ignoreElements } from 'rxjs/operator/ignoreElements';
 import { Store } from '../store';
-import { Observable } from 'rxjs/Observable';
 import "reflect-metadata";  // https://www.npmjs.com/package/reflect-metadata
 
 const METADATA_KEY = '@node-rx/effects';
